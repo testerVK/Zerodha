@@ -1,0 +1,72 @@
+package Parameteraization;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+public class ExcelTo_POm {
+	//Declaration
+	@FindBy(xpath="//input[@name='firstname']") private WebElement fname;
+	
+	@FindBy(xpath="//input[@name='lastname']") private WebElement lname;
+	
+	@FindBy(xpath="//input[@name='reg_email__']") private WebElement email;
+	
+	@FindBy(xpath="//input[@data-type='password']") private WebElement password;
+	
+	@FindBy(xpath="//select[@name='birthday_day']") private WebElement Birthday;
+	
+	@FindBy(xpath="//select[@name='birthday_month']") private WebElement BirthdayMOnth;
+	
+	@FindBy(xpath="//select[@name='birthday_year']") private WebElement BirthdayYear;
+
+	@FindBy(xpath="//label[@class=\"_58mt\"][1]") private WebElement FeMaleRadioBtn;
+	
+	@FindBy(xpath="//label[@class=\"_58mt\"][2]") private WebElement MaleRadioBtn;
+	
+	//Initialization
+	ExcelTo_POm(WebDriver driver){
+		PageFactory.initElements( driver,this );
+		
+	}
+	//Usage
+	public void enterfirstname(String firstname) {
+		fname.sendKeys(firstname);
+	}
+	
+	public void enterlastname(String Lastname) {
+		lname.sendKeys(Lastname);
+	}	
+	public void enteremail(String Emailid) {
+		email.sendKeys(Emailid);
+	}
+	public void enterPAssword(String PAssword) {
+		password.sendKeys(PAssword);
+	}
+	
+	public void enterBirthday(String Day ) {
+		  Select SB1 =new Select(Birthday);
+		  SB1.selectByVisibleText(Day);
+	}
+	public void enterBirthmotn(String Month ) {
+		  Select SB2 =new Select(BirthdayMOnth);
+		  SB2.selectByValue(Month);
+	}
+	
+	public void enterBirthyear(String Year ) {
+		  Select SB3 =new Select(BirthdayYear);
+		  SB3.selectByVisibleText(Year);
+	}
+	
+	public void clickOnFemale(String Gender) {
+		FeMaleRadioBtn.click();
+		
+	}
+	
+	public void clickOnMale() {
+		MaleRadioBtn.click();
+	}
+	
+}
