@@ -1,0 +1,41 @@
+Scrrenshot desing code
+
+package Screenshot;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.io.FileHandler;
+
+
+
+public class BaseCLass {
+	public static void main(String[] args) throws InterruptedException, IOException {
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Admin1\\Downloads\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver =new ChromeDriver();
+		
+		driver.get("https://www.facebook.com/");
+		
+		driver.manage().window().maximize();
+		driver.findElement(By.xpath("//input[@type='text']")).sendKeys("vaibhav");
+		
+		
+		Thread.sleep(2000);
+		File srp = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		
+			Date d =new Date();
+			String Date = d.toString();
+		String str = Date.replace(":", "_");
+		File file =new File("D:\\All main Files vaibhav\\seleniumsrc\\image_"+str+".jpg");
+		
+			FileHandler.copy(srp,file);
+	}
+
+}
